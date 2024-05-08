@@ -6,5 +6,9 @@ import { useAppDispatch } from 'store/hooks';
 export const ShortLinkCreateTrigger = () => {
   const dispatch = useAppDispatch();
   const handleClick = () => dispatch(openCreateModal());
-  return <Button onClick={handleClick}>Add Shortlink</Button>;
+  return (
+    <Button w="fit-content" onClick={handleClick}>
+      Add Shortlink
+    </Button>
+  );
 };

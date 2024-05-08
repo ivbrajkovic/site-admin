@@ -1,21 +1,22 @@
 import { Container, Stack } from '@mantine/core';
 
-import { ShortLinkCreateModal } from 'apps/Shortlink/components/ShortLinkCreateModal';
+import { ShortLinkCreateForm } from 'apps/Shortlink/components/ShortLinkCreateForm/ShortLinkCreateForm';
 import { ShortLinkCreateTrigger } from 'apps/Shortlink/components/ShortLinkCreateTrigger';
-import { ShortLinkEditModal } from 'apps/Shortlink/components/ShortLinkEditModal';
-import { ShortlinkTable } from 'apps/Shortlink/components/ShortlinkTable';
+import { ShortLinkEditForm } from 'apps/Shortlink/components/ShortLinkEditForm/ShortLinkEditForm';
+import { ShortLinkModal } from 'apps/Shortlink/components/ShortLinkModal/ShortLinkModal';
+import { ShortlinkTable } from 'apps/Shortlink/components/ShortlinkTable/ShortlinkTable';
 
 export const Shortlink = () => (
-  <Container size="lg">
-    <Stack mt="xl" gap="lg">
-      <div>
-        <ShortLinkCreateTrigger />
-      </div>
-      <div>
-        <ShortlinkTable />
-      </div>
+  <Container size="md" w="100%">
+    <Stack mt="xl" h="100vh" gap="lg">
+      <ShortLinkCreateTrigger />
+      <ShortlinkTable />
     </Stack>
-    <ShortLinkCreateModal />
-    <ShortLinkEditModal />
+    <ShortLinkModal modal="create" title="Create Shortlink">
+      <ShortLinkCreateForm />
+    </ShortLinkModal>
+    <ShortLinkModal modal="edit" title="Edit Shortlink">
+      <ShortLinkEditForm />
+    </ShortLinkModal>
   </Container>
 );

@@ -19,4 +19,5 @@ export const shortlinkApi = createApi({
   }),
 });
 
-export const { useGetShortlinksQuery } = shortlinkApi;
+export const { useGetShortlinksQuery, useLazyGetShortlinksQuery } =
+  shortlinkApi;

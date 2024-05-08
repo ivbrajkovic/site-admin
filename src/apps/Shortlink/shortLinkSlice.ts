@@ -2,11 +2,11 @@ import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { RootState } from 'store/store';
 
-type Modal = 'create' | 'edit' | null;
+export type ModalType = 'create' | 'edit' | null;
 
 type ShortLinkState = {
-  modal: Modal | null;
-  shortLinkId?: number | null;
+  modal: ModalType | null;
+  shortLinkId: number | null;
 };
 
 const initialState: ShortLinkState = {

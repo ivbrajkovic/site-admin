@@ -8,7 +8,7 @@ import { ShortlinkTable } from 'apps/Shortlink/components/ShortlinkTable/Shortli
 
 export const Shortlink = () => (
   <Container size="md" w="100%">
-    <Stack mt="xl" h="100vh" gap="lg">
+    <Stack mt="xl" gap="lg">
       <ShortLinkCreateTrigger />
       <ShortlinkTable />
     </Stack>

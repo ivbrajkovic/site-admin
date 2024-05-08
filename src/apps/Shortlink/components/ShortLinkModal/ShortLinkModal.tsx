@@ -1,7 +1,8 @@
 import { Modal } from '@mantine/core';
 import { PropsWithChildren } from 'react';
 
-import { useShortLinkModal } from 'apps/Shortlink/components/ShortLinkModal/useShortLinkModal';
+import { useCloseModal } from 'apps/Shortlink/components/ShortLinkModal/hooks/useCloseModal';
+import { useIsOpenModal } from 'apps/Shortlink/components/ShortLinkModal/hooks/useIsOpenModal';
 import { ModalType } from 'apps/Shortlink/shortLinkSlice';
 
 type ShortLinkModalProps = PropsWithChildren<{
@@ -10,7 +11,8 @@ type ShortLinkModalProps = PropsWithChildren<{
 }>;
 
 export const ShortLinkModal = (props: ShortLinkModalProps) => {
-  const { isOpen, closeModal } = useShortLinkModal(props.modal);
+  const { isOpen } = useIsOpenModal(props.modal);
+  const { closeModal } = useCloseModal();
   return (
     <Modal
       centered

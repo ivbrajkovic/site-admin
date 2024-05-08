@@ -1,5 +1,6 @@
 import 'theme/styles.css';
 
+import { Notifications } from '@mantine/notifications';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
@@ -11,6 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <StoreProvider>
       <ThemeProvider>
+        <Notifications />
         <Router />
       </ThemeProvider>
     </StoreProvider>

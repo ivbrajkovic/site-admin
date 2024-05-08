@@ -12,7 +12,7 @@ export const Shortlink = () => (
       <ShortLinkCreateTrigger />
       <ShortlinkTable />
     </Stack>
-    <ShortLinkModal modal="create" title="Create Shortlink">
+    <ShortLinkModal modal="create" title="New Shortlink">
       <ShortLinkCreateForm />
     </ShortLinkModal>
     <ShortLinkModal modal="edit" title="Edit Shortlink">

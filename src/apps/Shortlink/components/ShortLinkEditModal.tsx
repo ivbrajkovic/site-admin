@@ -1,4 +1,4 @@
-import { Modal, ModalContent, ModalHeader } from 'semantic-ui-react';
+import { Modal } from '@mantine/core';
 
 import {
   closeModal,
@@ -16,9 +16,9 @@ export const ShortLinkEditModal = () => {
   const isOpen = modal === 'edit';
 
   return (
-    <Modal open={isOpen} onClose={handleCloseModal}>
-      <ModalHeader>Modal #1</ModalHeader>
-      <ModalContent>ShortlinkId {shortLinkId}</ModalContent>
+    <Modal title="Edit Shortlink " opened={isOpen} onClose={handleCloseModal}>
+      Modal #1
+      <div>ShortlinkId {shortLinkId}</div>
     </Modal>
   );
 };

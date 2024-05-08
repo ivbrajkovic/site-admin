@@ -1,4 +1,4 @@
-import { Modal, ModalContent, ModalHeader } from 'semantic-ui-react';
+import { Modal, Text } from '@mantine/core';
 
 import { closeModal, selectModal } from 'apps/Shortlink/shortLinkSlice';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
@@ -11,9 +11,9 @@ export const ShortLinkCreateModal = () => {
   const isOpen = modal === 'create';
 
   return (
-    <Modal open={isOpen} onClose={handleCloseModal}>
-      <ModalHeader>Modal #1</ModalHeader>
-      <ModalContent>Content #1</ModalContent>
+    <Modal opened={isOpen} onClose={handleCloseModal}>
+      <Text>Modal #1</Text>
+      <Text>Content #1</Text>
     </Modal>
   );
 };

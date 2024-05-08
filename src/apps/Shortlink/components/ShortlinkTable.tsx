@@ -1,11 +1,4 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHeader,
-  TableHeaderCell,
-  TableRow,
-} from 'semantic-ui-react';
+import { Table } from '@mantine/core';
 
 import { ShortlinkTableAction } from 'apps/Shortlink/components/ShortlinkTableAction';
 import { openCreateModal, openEditModal } from 'apps/Shortlink/shortLinkSlice';
@@ -30,27 +23,27 @@ export const ShortlinkTable = () => {
 
   return (
     <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHeaderCell>Tag</TableHeaderCell>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>URL</TableHeaderCell>
-          <TableHeaderCell>Actions</TableHeaderCell>
-        </TableRow>
-      </TableHeader>
+      <Table.Thead>
+        <Table.Tr>
+          <Table.Th>Tag</Table.Th>
+          <Table.Th>Name</Table.Th>
+          <Table.Th>URL</Table.Th>
+          <Table.Th>Actions</Table.Th>
+        </Table.Tr>
+      </Table.Thead>
 
-      <TableBody>
+      <Table.Tbody>
         {data.map((shortlink) => (
-          <TableRow key={shortlink.id}>
-            <TableCell>{shortlink.tag}</TableCell>
-            <TableCell>{shortlink.name}</TableCell>
-            <TableCell>{shortlink.url}</TableCell>
-            <TableCell>
+          <Table.Tr key={shortlink.id}>
+            <Table.Td>{shortlink.tag}</Table.Td>
+            <Table.Td>{shortlink.name}</Table.Td>
+            <Table.Td>{shortlink.url}</Table.Td>
+            <Table.Td>
               <ShortlinkTableAction onEdit={editShortlink(shortlink.id)} />
-            </TableCell>
-          </TableRow>
+            </Table.Td>
+          </Table.Tr>
         ))}
-      </TableBody>
+      </Table.Tbody>
     </Table>
   );
 };

@@ -1,4 +1,5 @@
-import { Button, Icon } from 'semantic-ui-react';
+import { ActionIcon } from '@mantine/core';
+import { IconCopy, IconEdit } from '@tabler/icons-react';
 
 type ShortlinkTableActionProps = {
   onEdit: () => void;
@@ -7,12 +8,12 @@ type ShortlinkTableActionProps = {
 export const ShortlinkTableAction = (props: ShortlinkTableActionProps) => {
   return (
     <div>
-      <Button basic icon compact size="tiny" onClick={props.onEdit}>
-        <Icon name="edit outline" />
-      </Button>
-      <Button basic icon compact size="tiny">
-        <Icon name="linkify" />
-      </Button>
+      <ActionIcon onClick={props.onEdit}>
+        <IconEdit />
+      </ActionIcon>
+      <ActionIcon>
+        <IconCopy />
+      </ActionIcon>
     </div>
   );
 };

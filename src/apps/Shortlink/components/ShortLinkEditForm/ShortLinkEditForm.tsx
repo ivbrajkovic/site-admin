@@ -14,7 +14,7 @@ export const ShortLinkEditForm = () => {
           <FormTextInput disabled control={control} name="tag" label="Tag" />
           <FormTextInput control={control} name="name" label="Name" />
           <FormTextInput control={control} name="url" label="URL" />
-          <Group justify="flex-end">
+          <Group mt="xs" justify="flex-end">
             <Button variant="outline" onClick={closeModal}>
               Cancel
             </Button>

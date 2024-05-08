@@ -40,8 +40,8 @@ export const useShortlinkCreateForm = () => {
     resolver: zodResolver(shortlinkCreateValidation),
     defaultValues: {
       tag,
-      name: 'My Github Profile',
-      url: 'https://github.com/ivbrajkovic',
+      name: '',
+      url: '',
     },
   });
 
@@ -52,5 +52,5 @@ export const useShortlinkCreateForm = () => {
       .catch(errorNotificationCurried({ title: 'Failed to create shortlink' })),
   );
 
-  return { isLoading, control, onSubmit };
+  return { isLoading, control, onSubmit, closeModal };
 };

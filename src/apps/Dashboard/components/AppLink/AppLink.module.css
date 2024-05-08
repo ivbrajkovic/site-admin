@@ -1,0 +1,23 @@
+.link {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 275px;
+  margin: 20px;
+  color: #fff;
+  border: 1px solid #3d4d65;
+  background-color: #3d4d65;
+  border-radius: 4px;
+  font-size: 14px;
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    font-size: 16px;
+    color: #000;
+    background-color: #e9fff8;
+    box-shadow: 0 0 30px 0 #e9fff8;
+  }
+}

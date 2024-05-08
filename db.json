@@ -1,0 +1,18 @@
+{
+  "version": "7.0.0",
+  "shortlinks": [
+    { "id": "1", "tag": "a tag", "name": "a name", "url": "a url" },
+    {
+      "id": "2",
+      "tag": "another tag",
+      "name": "another name",
+      "url": "another url"
+    },
+    {
+      "id": "3",
+      "tag": "yet another tag",
+      "name": "yet another name",
+      "url": "yet another url"
+    }
+  ]
+}

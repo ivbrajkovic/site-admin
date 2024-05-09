@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { modals } from '@mantine/modals';
 import { useForm } from 'react-hook-form';
 
 import { editFormValidation } from 'apps/Shortlink/components/EditForm/editFormValidation';
@@ -6,7 +7,6 @@ import {
   useGetShortlinksQuery,
   useUpdateShortlinkMutation,
 } from 'apps/Shortlink/shortlinkApi';
-import { useCloseModal } from 'components/Modal/hooks/useCloseModal';
 import { errorNotificationCurried } from 'util/notification';
 
 export type ShortlinkEditFromValues = {
@@ -16,7 +16,6 @@ export type ShortlinkEditFromValues = {
 };
 
 export const useEditForm = (shortlinkId: string) => {
-  const { closeModal } = useCloseModal();
   const [updateShortlink, { isLoading }] = useUpdateShortlinkMutation();
 
   const { shortlink } = useGetShortlinksQuery(undefined, {
@@ -39,11 +38,11 @@ export const useEditForm = (shortlinkId: string) => {
       shortlinkId &&
       updateShortlink({ id: shortlinkId, ...data })
         .unwrap()
-        .then(closeModal)
+        .then(modals.closeAll)
         .catch(
           errorNotificationCurried({ title: 'Failed to update shortlink' }),
         ),
   );
 
-  return { isLoading, control, onSubmit, closeModal };
+  return { isLoading, control, onSubmit, closeModal: modals.closeAll };
 };

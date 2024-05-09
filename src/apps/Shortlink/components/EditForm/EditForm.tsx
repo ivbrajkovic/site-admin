@@ -4,11 +4,11 @@ import { useEditForm } from 'apps/Shortlink/components/EditForm/useEditForm';
 import { FormDevTools } from 'components/FormDevTools';
 import { FormTextInput } from 'components/FormTextInput';
 
-export type EditFormModalPayload = {
+export type EditModalProps = {
   shortlinkId: string;
 };
 
-export const EditForm = (props: EditFormModalPayload) => {
+export const EditForm = (props: EditModalProps) => {
   const { isLoading, control, onSubmit, closeModal } = useEditForm(
     props.shortlinkId,
   );

@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { modals } from '@mantine/modals';
 import { useForm } from 'react-hook-form';
 
 import { createFormValidation } from 'apps/Shortlink/components/CreateForm/createFormValidation';
@@ -7,7 +8,6 @@ import {
   useCreateShortlinkMutation,
   useGetShortlinksQuery,
 } from 'apps/Shortlink/shortlinkApi';
-import { useCloseModal } from 'components/Modal/hooks/useCloseModal';
 import { errorNotificationCurried } from 'util/notification';
 
 export type ShortlinkCreateFromValues = {
@@ -27,7 +27,6 @@ const findMaxTagValue = (shortlinks: Shortlink[]) => {
 };
 
 export const useCreateForm = () => {
-  const { closeModal } = useCloseModal();
   const [createShortlink, { isLoading }] = useCreateShortlinkMutation();
 
   const { tag } = useGetShortlinksQuery(undefined, {
@@ -48,9 +47,9 @@ export const useCreateForm = () => {
   const onSubmit = handleSubmit((data: ShortlinkCreateFromValues) =>
     createShortlink(data)
       .unwrap()
-      .then(closeModal)
+      .then(modals.closeAll)
       .catch(errorNotificationCurried({ title: 'Failed to create shortlink' })),
   );
 
-  return { isLoading, control, onSubmit, closeModal };
+  return { isLoading, control, onSubmit, closeModal: modals.closeAll };
 };

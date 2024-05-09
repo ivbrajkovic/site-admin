@@ -1,14 +1,10 @@
 import { Skeleton, Table, Text } from '@mantine/core';
+import { modals } from '@mantine/modals';
 
-import { EditFormModalPayload } from 'apps/Shortlink/components/EditForm/EditForm';
 import { ShortlinkTableAction } from 'apps/Shortlink/components/LinkListTable/LinkListTableAction';
 import { useGetShortlinksQuery } from 'apps/Shortlink/shortlinkApi';
-import { openModal } from 'components/Modal/modalSlice';
-import { useAppDispatch } from 'store/hooks';
 
 export const LinkListTable = () => {
-  const dispatch = useAppDispatch();
-
   const { data, isLoading, error } = useGetShortlinksQuery();
 
   if (isLoading)
@@ -25,13 +21,12 @@ export const LinkListTable = () => {
   // TODO: Add empty state
   if (!data?.length) return null;
 
-  const editShortlink = (id: string) => () =>
-    dispatch(
-      openModal({
-        name: 'edit',
-        payload: { shortlinkId: id } as EditFormModalPayload,
-      }),
-    );
+  const handleEdit = (id: string) => () =>
+    modals.openContextModal({
+      modal: 'edit',
+      title: 'Edit Shortlink',
+      innerProps: { shortlinkId: id },
+    });
 
   return (
     <Table
@@ -59,7 +54,7 @@ export const LinkListTable = () => {
             <Table.Td>
               <ShortlinkTableAction
                 url={shortlink.url}
-                onEdit={editShortlink(shortlink.id)}
+                onEdit={handleEdit(shortlink.id)}
               />
             </Table.Td>
           </Table.Tr>

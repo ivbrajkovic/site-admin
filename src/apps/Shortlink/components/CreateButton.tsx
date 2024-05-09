@@ -1,14 +1,15 @@
 import { Button } from '@mantine/core';
+import { modals } from '@mantine/modals';
 
-import { openModal } from 'components/Modal/modalSlice';
-import { useAppDispatch } from 'store/hooks';
+const openCreateModal = () =>
+  modals.openContextModal({
+    modal: 'create',
+    title: 'New Shortlink',
+    innerProps: {},
+  });
 
-export const CreateButton = () => {
-  const dispatch = useAppDispatch();
-  const handleClick = () => dispatch(openModal({ name: 'create' }));
-  return (
-    <Button w="fit-content" onClick={handleClick}>
-      Add Shortlink
-    </Button>
-  );
-};
+export const CreateButton = () => (
+  <Button w="fit-content" onClick={openCreateModal}>
+    Add Shortlink
+  </Button>
+);

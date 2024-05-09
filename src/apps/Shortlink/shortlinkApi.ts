@@ -19,7 +19,7 @@ export const shortlinkApi = createApi({
 
     createShortlink: builder.mutation<Shortlink, Partial<Shortlink>>({
       query: (body) => ({
-        url: '/shortlinksX',
+        url: '/shortlinks',
         method: 'POST',
         body,
       }),

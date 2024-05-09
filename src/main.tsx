@@ -5,7 +5,7 @@ import { Notifications } from '@mantine/notifications';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { modals } from 'apps/Shortlink/modals';
+import { modals } from 'modals/modals';
 import { Router } from 'router/Router';
 import { StoreProvider } from 'store/StoreProvider';
 import { ThemeProvider } from 'theme/ThemeProvider';

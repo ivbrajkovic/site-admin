@@ -1,13 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import { shortlinkCreateValidation } from 'apps/Shortlink/components/ShortLinkCreateForm/shortlinkCreateValidation';
-import { useCloseModal } from 'apps/Shortlink/components/ShortLinkModal/hooks/useCloseModal';
+import { createFormValidation } from 'apps/Shortlink/components/CreateForm/createFormValidation';
 import {
   Shortlink,
   useCreateShortlinkMutation,
   useGetShortlinksQuery,
 } from 'apps/Shortlink/shortlinkApi';
+import { useCloseModal } from 'components/Modal/hooks/useCloseModal';
 import { errorNotificationCurried } from 'util/notification';
 
 export type ShortlinkCreateFromValues = {
@@ -26,7 +26,7 @@ const findMaxTagValue = (shortlinks: Shortlink[]) => {
   return tag ? ++tag : START_TAG;
 };
 
-export const useShortlinkCreateForm = () => {
+export const useCreateForm = () => {
   const { closeModal } = useCloseModal();
   const [createShortlink, { isLoading }] = useCreateShortlinkMutation();
 
@@ -37,7 +37,7 @@ export const useShortlinkCreateForm = () => {
   });
 
   const { control, handleSubmit } = useForm<ShortlinkCreateFromValues>({
-    resolver: zodResolver(shortlinkCreateValidation),
+    resolver: zodResolver(createFormValidation),
     defaultValues: {
       tag,
       name: '',

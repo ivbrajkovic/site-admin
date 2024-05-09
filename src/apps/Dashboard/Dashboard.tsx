@@ -1,13 +1,13 @@
 import { Container, Flex, Stack } from '@mantine/core';
 
-import { AppLinkList } from 'apps/Dashboard/components/AppLinkList';
+import { LinkList } from 'apps/Dashboard/components/LinkList';
 import { Version } from 'apps/Dashboard/components/Version/Version';
 
 export const Dashboard = () => (
   <Container size="lg">
     <Stack h="100vh" justify="space-between">
       <Flex py="lg" justify="center" wrap="wrap">
-        <AppLinkList />
+        <LinkList />
       </Flex>
       <Flex py="lg" justify="center">
         <Version />

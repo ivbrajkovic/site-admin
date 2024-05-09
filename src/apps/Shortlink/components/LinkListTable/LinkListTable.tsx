@@ -1,11 +1,12 @@
 import { Skeleton, Table, Text } from '@mantine/core';
 
-import { ShortlinkTableAction } from 'apps/Shortlink/components/ShortlinkTable/ShortlinkTableAction';
-import { openEditModal } from 'apps/Shortlink/shortLinkSlice';
+import { EditFormModalPayload } from 'apps/Shortlink/components/EditForm/EditForm';
+import { ShortlinkTableAction } from 'apps/Shortlink/components/LinkListTable/LinkListTableAction';
 import { useGetShortlinksQuery } from 'apps/Shortlink/shortlinkApi';
+import { openModal } from 'components/Modal/modalSlice';
 import { useAppDispatch } from 'store/hooks';
 
-export const ShortlinkTable = () => {
+export const LinkListTable = () => {
   const dispatch = useAppDispatch();
 
   const { data, isLoading, error } = useGetShortlinksQuery();
@@ -24,7 +25,13 @@ export const ShortlinkTable = () => {
   // TODO: Add empty state
   if (!data?.length) return null;
 
-  const editShortlink = (id: number) => () => dispatch(openEditModal(id));
+  const editShortlink = (id: string) => () =>
+    dispatch(
+      openModal({
+        name: 'edit',
+        payload: { shortlinkId: id } as EditFormModalPayload,
+      }),
+    );
 
   return (
     <Table

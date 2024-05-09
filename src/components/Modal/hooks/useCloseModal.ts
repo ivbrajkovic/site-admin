@@ -1,4 +1,4 @@
-import { closeModal } from 'apps/Shortlink/shortLinkSlice';
+import { closeModal } from 'components/Modal/modalSlice';
 import { useAppDispatch } from 'store/hooks';
 
 export const useCloseModal = () => {

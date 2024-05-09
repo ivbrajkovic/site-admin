@@ -8,20 +8,25 @@ import { Dashboard } from 'apps/Dashboard/Dashboard';
 import { Shortlink } from 'apps/Shortlink/Shortlink';
 import { route } from 'router/route';
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      index: true,
+      Component: Dashboard,
+    },
+    {
+      path: route.shortlink,
+      Component: Shortlink,
+    },
+    {
+      // Catch all unmatched routes and redirect to the root route
+      path: '*',
+      element: <Navigate to="/" replace={true} />,
+    },
+  ],
   {
-    index: true,
-    Component: Dashboard,
+    basename: import.meta.env.VITE_BASENAME,
   },
-  {
-    path: route.shortlink,
-    Component: Shortlink,
-  },
-  {
-    // Catch all unmatched routes and redirect to the root route
-    path: '*',
-    element: <Navigate to="/" replace={true} />,
-  },
-]);
+);
 
 export const Router = () => <RouterProvider router={router} />;

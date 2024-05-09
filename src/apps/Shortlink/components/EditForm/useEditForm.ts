@@ -1,14 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import { shortlinkEditValidation } from 'apps/Shortlink/components/ShortLinkEditForm/shortlinkEditValidation';
-import { useCloseModal } from 'apps/Shortlink/components/ShortLinkModal/hooks/useCloseModal';
-import { selectShortLinkId } from 'apps/Shortlink/shortLinkSlice';
+import { editFormValidation } from 'apps/Shortlink/components/EditForm/editFormValidation';
 import {
   useGetShortlinksQuery,
   useUpdateShortlinkMutation,
 } from 'apps/Shortlink/shortlinkApi';
-import { useAppSelector } from 'store/hooks';
+import { useCloseModal } from 'components/Modal/hooks/useCloseModal';
 import { errorNotificationCurried } from 'util/notification';
 
 export type ShortlinkEditFromValues = {
@@ -17,19 +15,18 @@ export type ShortlinkEditFromValues = {
   url: string;
 };
 
-export const useShortlinkEditForm = () => {
+export const useEditForm = (shortlinkId: string) => {
   const { closeModal } = useCloseModal();
-  const shortLinkId = useAppSelector(selectShortLinkId);
   const [updateShortlink, { isLoading }] = useUpdateShortlinkMutation();
 
   const { shortlink } = useGetShortlinksQuery(undefined, {
     selectFromResult: ({ data }) => ({
-      shortlink: data?.find((shortlink) => shortlink.id === shortLinkId),
+      shortlink: data?.find((shortlink) => shortlink.id === shortlinkId),
     }),
   });
 
   const { control, handleSubmit } = useForm<ShortlinkEditFromValues>({
-    resolver: zodResolver(shortlinkEditValidation),
+    resolver: zodResolver(editFormValidation),
     defaultValues: {
       tag: shortlink?.tag,
       name: shortlink?.name,
@@ -39,8 +36,8 @@ export const useShortlinkEditForm = () => {
 
   const onSubmit = handleSubmit(
     (data: ShortlinkEditFromValues) =>
-      shortLinkId &&
-      updateShortlink({ id: shortLinkId, ...data })
+      shortlinkId &&
+      updateShortlink({ id: shortlinkId, ...data })
         .unwrap()
         .then(closeModal)
         .catch(

@@ -1,11 +1,11 @@
 import { Button } from '@mantine/core';
 
-import { openCreateModal } from 'apps/Shortlink/shortLinkSlice';
+import { openModal } from 'components/Modal/modalSlice';
 import { useAppDispatch } from 'store/hooks';
 
-export const ShortLinkCreateTrigger = () => {
+export const CreateButton = () => {
   const dispatch = useAppDispatch();
-  const handleClick = () => dispatch(openCreateModal());
+  const handleClick = () => dispatch(openModal({ name: 'create' }));
   return (
     <Button w="fit-content" onClick={handleClick}>
       Add Shortlink

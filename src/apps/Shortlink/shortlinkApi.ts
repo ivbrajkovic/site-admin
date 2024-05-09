@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export type Shortlink = {
-  id: number;
+  id: string;
   tag: string;
   name: string;
   url: string;
